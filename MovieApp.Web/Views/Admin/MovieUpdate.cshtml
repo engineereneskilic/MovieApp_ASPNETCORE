@@ -1,0 +1,83 @@
+﻿@model MovieApp.Web.Models.AdminEditViewModel
+
+<h1>Edit Movie</h1>
+
+<hr>
+<form method="post" asp-controller="Admin" asp-action="MovieUpdate" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            <div asp-validation-summary="All"></div>
+
+            <input type="hidden" name="MovieID" value="@Model.MovieID" />
+            <div class="mb-3">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" value="@Model.Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description">Description</label>
+                <textarea name="Description" id="Description" value="@Model.Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ImageURL">ImageURL</label>
+                <input asp-for="ImageURL" value="@Model.ImageURL" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="hidden" name="ImageUrl" value="@Model.ImageURL" />
+                <input type="file" name="movieCoverImageFile" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-inline">Edit</button>
+        </div>
+        <div class="col-md-4">
+            @*@{
+           bool check = false;
+         }
+        @foreach (var item in (List<Genre>)ViewBag.Genres)
+        {   check = false;
+            @foreach (var selectedGenre in Model.SelectedGenres)
+            {
+                if (item.GenreID == selectedGenre.GenreID) { check = true; break; }
+            }
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="@(item.Name)" id="genre_@(item.GenreID)" @( (check) ? "checked" : "" )>
+                <label class="form-check-label" for="genre_@(item.GenreID)">
+                    @item.Name
+                </label>
+            </div>
+        }*@
+            @foreach (var item in (List<Genre>)ViewBag.Genres)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="@(item.GenreID)" name="genreIds" id="genre_@(item.GenreID)" @( Model.GenreIds!=null ?  Model.GenreIds.Any(i => i == item.GenreID) ? "checked" : "" : "")>
+                    <label class="form-check-label" for="genre_@(item.GenreID)">
+                        @item.Name
+                    </label>
+                </div>
+            }
+            <span asp-validation-for="GenreIds" class="text-danger"></span>
+
+            <div class="mt-3">
+                <img src="/img/@Model.ImageURL" width="150" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script src="https://cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('Description');
+    </script>
+}
+
+
+
+
+
+

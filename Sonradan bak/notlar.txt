@@ -1,0 +1,18 @@
+dotnet ef migrations remove --  uygulamada son olan migration sil
+
+Not: Uygulanmış migrationsı uygulamadan silemezsin
+
+MovieInitialCreate  bir önceki olan buna database ıpdate yap sonra remove de
+
+
+dotnet ef migrations add InitialCreate > Migrations klaösürünü sildin tekrar yapabilirsin
+> bekleyen migration aktarıldı
+dotnet ef database update
+*******************
+***************
+**************
+ef cpre database providers
+
+fluent api nedir
+
+[NotMapped] : Sadece uygulama tarafında column kalsın

@@ -1,0 +1,30 @@
+﻿<navbar class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collepse" data-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="novbarToggler"></div>
+        <a href="/" class="navbar-brand">MovieApp</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="float:left;">
+            <li class="nav-item">
+                <a href="/movies/" class="nav-link">MOVIES</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/moviecreate" class="nav-link">Admin Create Movie</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/create" class="nav-link">Adding Movie</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/movielist" class="nav-link">Admin Movies</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/genrelist" class="nav-link">Admin Genres</a>
+            </li>
+        </ul>
+        <form action="/movies/list" method="get" class="d-flex">
+            <input type="text" name="q" placeholder="Film Ara" name="" class="form-control me-2" />
+            <button type="submit" class="btn btn-outline-light mr-0">ARA</button>
+        </form>
+    </div>
+</navbar>

@@ -1,0 +1,63 @@
+﻿img {
+    width: 100%;
+    height: 100%;
+}
+body * {
+    /*background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);*/
+}
+*,text,textarea,form,.form-control, select {
+    /*color:white;*/
+}
+label {
+    font-weight:bold;
+    border:groove;
+    padding:3px;
+    padding:6px 6px;
+    margin-top:10px;
+}
+form label:first-child{
+    margin-top:0px
+}
+select option{
+    color:black;
+}
+table{
+    color:white;
+}
+
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.film-listesi {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.film {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+    .film img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .film h2 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .film p {
+        margin-bottom: 0;
+    }
+*/

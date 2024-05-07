@@ -1,0 +1,18 @@
+﻿@model HomePageViewModel
+
+@{
+    Layout = "_Layout2";
+}
+
+@section header
+{
+    @await Html.PartialAsync("_header")
+}
+
+<h1>Örnek Film Gösterimi</h1>
+<div id="filmler">
+    @foreach (var movie in Model.PopularMovies)
+    {
+        @await Html.PartialAsync("_movie", movie)
+    }
+</div>

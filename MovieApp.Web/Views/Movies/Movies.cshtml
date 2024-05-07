@@ -1,0 +1,41 @@
+﻿@model MovieApp.Web.Entity.MoviesViewModel
+
+
+
+@section scripts
+{
+    <script src="js/scripts.js"></script>
+}  
+               
+@if (TempData["Message"] != null)
+{
+    @section message
+    {
+        @await Html.PartialAsync("_message", (string)(TempData["Message"]))
+    }
+}
+<h1>Film Listesi</h1>
+<div class="film-listesi_i">
+    @if (Model.Movies.Count() > 0)
+    {
+        @foreach (var movie in Model.Movies)
+        {
+            @await Html.PartialAsync("_movie", movie)
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Film bulunamadı..
+        </div>
+    }
+</div> 
+
+
+@section menu{
+    @*@await Html.PartialAsync("_menu",Model.Genres) k*@  
+    @* Shared > Components > Genres > Default.cshtml *@
+    @await Component.InvokeAsync("Genres")
+}
+
+

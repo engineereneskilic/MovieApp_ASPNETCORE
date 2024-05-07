@@ -1,0 +1,75 @@
+﻿@model MovieApp.Web.Models.AdminCreateMovieModel
+
+<h1>Create Movie</h1>
+
+<hr>
+<form method="post" asp-controller="Admin" asp-action="MovieCreate">
+    <div class="row">
+        <div class="col-md-8">
+            <div asp-validation-summary="All"></div>
+
+            <div class="mb-3">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ReleaseDate">ReleaseDate</label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="isClassic">isClassic</label>
+                <input asp-for="isClassic" type="checkbox" class="form-control" />
+                <span asp-validation-for="isClassic" class="text-danger"></span>
+            </div>
+
+            @*<div class="mb-3">
+            <label asp-for="ImageURL">ImageURL</label>
+            <input asp-for="ImageURL" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>*@
+
+            <button type="submit" class="btn btn-primary btn-inline">Submit</button>
+        </div>
+        <div class="col-md-4">
+            @*@{
+                   bool check = false;
+                 }
+                @foreach (var item in (List<Genre>)ViewBag.Genres)
+                {   check = false;
+                    @foreach (var selectedGenre in Model.SelectedGenres)
+                    {
+                        if (item.GenreID == selectedGenre.GenreID) { check = true; break; }
+                    }
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="@(item.Name)" id="genre_@(item.GenreID)" @( (check) ? "checked" : "" )>
+                        <label class="form-check-label" for="genre_@(item.GenreID)">
+                            @item.Name
+                        </label>
+                    </div>
+                }*@
+            @foreach (var item in (List<Genre>)ViewBag.Genres)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="@(item.GenreID)" name="GenreIds" id="genre_@(item.GenreID)"))>
+                    <label class="form-check-label" for="genre_@(item.GenreID)">
+                        @item.Name
+                    </label>
+                </div>
+            }
+
+            <span asp-validation-for="GenreIds" class="text-danger"></span>
+        </div>
+    </div>
+</form>
+
+
